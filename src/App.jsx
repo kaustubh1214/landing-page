@@ -1,8 +1,21 @@
 import { useState, useEffect, useRef } from 'react'
 import {
   ClipboardList, Link2, Wallet, TrendingUp, LayoutDashboard, Target,
-  MessageCircle, ShoppingBag, Image, Sparkles
+  MessageCircle, ShoppingBag, Image, Sparkles, Heart, Send, Copy, ArrowUp,
+  MousePointerClick, Percent
 } from 'lucide-react'
+import beautybarnLogo from './assets/beautybarn-logo.png'
+import snailMucinEssence from './assets/products/snail-mucin-essence.webp'
+import hyaluronicCream from './assets/products/hyaluronic-cream.webp'
+import sunCream from './assets/products/sun-cream.webp'
+import cosrxLogo from './assets/brands/cosrx.png'
+import isntreeLogo from './assets/brands/isntree.png'
+import beautyOfJoseonLogo from './assets/brands/beauty-of-joseon.png'
+import vtCosmeticsLogo from './assets/brands/vt-cosmetics.png'
+import skin1004Logo from './assets/brands/skin1004.png'
+import axisYLogo from './assets/brands/axis-y.png'
+import laneigeLogo from './assets/brands/laneige.png'
+import dearKlairsLogo from './assets/brands/dear-klairs.png'
 import './App.css'
 
 function useScrollVisible() {
@@ -45,8 +58,7 @@ function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-inner">
         <a href="https://beautybarn.in" className="nav-logo" target="_blank" rel="noopener noreferrer">
-          <div className="nav-logo-icon">B</div>
-          BeautyBarn
+          <img src={beautybarnLogo} alt="BeautyBarn" className="nav-logo-img" />
         </a>
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <li><a href="#how-it-works" onClick={() => setMenuOpen(false)}>How It Works</a></li>
@@ -62,6 +74,84 @@ function Navbar() {
   )
 }
 
+function HeroIllustration() {
+  return (
+    <div className="hero-illustration">
+      <div className="hero-glow" />
+
+      {/* abstract accent blobs */}
+      <div className="hero-blob blob-1" />
+      <div className="hero-blob blob-2" />
+      <div className="hero-blob blob-3" />
+      <div className="hero-blob blob-4" />
+
+      {/* radar/target rings behind the phone */}
+      <div className="hero-rings">
+        <div className="hero-ring ring-1" />
+        <div className="hero-ring ring-2" />
+      </div>
+
+      {/* Instagram-style post mockup: shows the actual affiliate mechanic */}
+      <div className="phone-mockup">
+        <div className="phone-notch" />
+        <div className="phone-post">
+          <div className="post-header">
+            <div className="post-avatar" />
+            <div>
+              <div className="post-username">yourhandle</div>
+              <div className="post-sponsored">Sponsored</div>
+            </div>
+          </div>
+          <div className="post-image-wrap">
+            <img src={snailMucinEssence} alt="COSRX Advanced Snail 96 Mucin Power Essence" className="post-image" />
+            <div className="post-shop-tag">
+              <ShoppingBag size={12} />
+              Tap to shop
+            </div>
+          </div>
+          <div className="post-actions">
+            <Heart size={18} />
+            <MessageCircle size={18} />
+            <Send size={18} />
+          </div>
+          <div className="post-caption">
+            <strong>yourhandle</strong> obsessed with this serum ✨ link in bio
+          </div>
+        </div>
+      </div>
+
+      {/* floating affiliate-mechanic stat badges */}
+      <div className="floating-badge badge-earnings">
+        <TrendingUp size={18} strokeWidth={2.25} />
+        <div>
+          <div className="badge-value">+₹450</div>
+          <div className="badge-label">Commission Earned</div>
+        </div>
+      </div>
+
+      <div className="floating-badge badge-link">
+        <Link2 size={14} />
+        <span>beautybarn.in/aff/you</span>
+        <Copy size={13} />
+      </div>
+
+      <div className="stat-pill pill-clicks">
+        <span className="stat-pill-icon"><MousePointerClick size={12} /></span>
+        Clicks <ArrowUp size={11} />
+      </div>
+
+      <div className="stat-pill pill-conversion">
+        <span className="stat-pill-icon"><Percent size={12} /></span>
+        Conversion <ArrowUp size={11} />
+      </div>
+
+      {/* small product accents for beauty context */}
+      <img src={hyaluronicCream} alt="Isntree Hyaluronic Acid Moist Cream" className="hero-product-accent accent-tl" />
+      <img src={sunCream} alt="COSRX Aloe Soothing Sun Cream" className="hero-product-accent accent-br" />
+    </div>
+  )
+}
+
 function Hero() {
   return (
     <section className="hero">
@@ -70,40 +160,75 @@ function Hero() {
         <div className="shape shape-2"></div>
         <div className="shape shape-3"></div>
       </div>
-      <div className="hero-content">
-        <div className="hero-badge">
-          <span className="hero-badge-dot"></span>
-          AFFILIATE PROGRAM — COMING SOON
+      <div className="hero-inner">
+        <div className="hero-content">
+          <div className="hero-badge">
+            <span className="hero-badge-dot"></span>
+            AFFILIATE PROGRAM — COMING SOON
+          </div>
+          <h1>
+            Turn Your Love for <span>K-Beauty</span> Into Earnings
+          </h1>
+          <p className="hero-subtitle">
+            Join BeautyBarn's affiliate program and earn commissions by sharing the K-beauty products you already love with your audience.
+          </p>
+          <div className="hero-actions">
+            <a href="#join" className="btn-primary">
+              Join the Waitlist →
+            </a>
+            <a href="#how-it-works" className="btn-secondary">
+              Learn More
+            </a>
+          </div>
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <div className="hero-stat-value">500+</div>
+              <div className="hero-stat-label">Products to Promote</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-value">50+</div>
+              <div className="hero-stat-label">K-Beauty Brands</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-value">Up to 10%</div>
+              <div className="hero-stat-label">Commission Rates</div>
+            </div>
+          </div>
         </div>
-        <h1>
-          Turn Your Love for <span>K-Beauty</span> Into Earnings
-        </h1>
-        <p className="hero-subtitle">
-          Join BeautyBarn's affiliate program and earn commissions by sharing the K-beauty products you already love with your audience.
-        </p>
-        <div className="hero-actions">
-          <a href="#join" className="btn-primary">
-            Join the Waitlist →
-          </a>
-          <a href="#how-it-works" className="btn-secondary">
-            Learn More
-          </a>
-        </div>
-        <div className="hero-stats">
-          <div className="hero-stat">
-            <div className="hero-stat-value">500+</div>
-            <div className="hero-stat-label">Products to Promote</div>
-          </div>
-          <div className="hero-stat">
-            <div className="hero-stat-value">50+</div>
-            <div className="hero-stat-label">K-Beauty Brands</div>
-          </div>
-          <div className="hero-stat">
-            <div className="hero-stat-value">Up to 10%</div>
-            <div className="hero-stat-label">Commission Rates</div>
-          </div>
+        <div className="hero-visual">
+          <HeroIllustration />
         </div>
       </div>
+    </section>
+  )
+}
+
+function BrandsStrip() {
+  const brands = [
+    { name: 'COSRX', img: cosrxLogo },
+    { name: 'Isntree', img: isntreeLogo },
+    { name: 'Beauty of Joseon', img: beautyOfJoseonLogo },
+    { name: 'VT Cosmetics', img: vtCosmeticsLogo },
+    { name: 'SKIN1004', img: skin1004Logo },
+    { name: 'AXIS-Y', img: axisYLogo },
+    { name: 'Laneige', img: laneigeLogo },
+    { name: 'Dear Klairs', img: dearKlairsLogo },
+  ]
+
+  return (
+    <section className="brands-strip">
+      <FadeIn>
+        <p className="brands-strip-label">Promote products from brands your audience already loves</p>
+      </FadeIn>
+      <FadeIn>
+        <div className="brands-track">
+          {brands.map((b, i) => (
+            <div className="brand-card" key={i}>
+              <img src={b.img} alt={b.name} />
+            </div>
+          ))}
+        </div>
+      </FadeIn>
     </section>
   )
 }
@@ -119,6 +244,7 @@ function HowItWorks() {
         </div>
       </FadeIn>
       <div className="steps-grid">
+        <div className="flow-dot" />
         {[
           { Icon: ClipboardList, label: 'Step 1', title: 'Sign Up & Get Approved', desc: 'Fill out our simple application form. Our team reviews and approves your profile within 48 hours.' },
           { Icon: Link2, label: 'Step 2', title: 'Share Your Links', desc: 'Browse products, generate unique tracking links, and share them with your audience on any platform.' },
@@ -174,10 +300,51 @@ function Benefits() {
   )
 }
 
+function DashboardMockup() {
+  const bars = [40, 62, 50, 78, 58, 92, 70]
+  return (
+    <div className="dashboard-mockup">
+      <div className="dashboard-topbar">
+        <div className="dashboard-dots">
+          <span /><span /><span />
+        </div>
+        <div className="dashboard-tab">Your Affiliate Dashboard</div>
+      </div>
+      <div className="dashboard-stats">
+        <div className="dashboard-stat">
+          <div className="dashboard-stat-label">Clicks</div>
+          <div className="dashboard-stat-value">1,284</div>
+          <div className="dashboard-stat-delta"><ArrowUp size={11} /> 12%</div>
+        </div>
+        <div className="dashboard-stat">
+          <div className="dashboard-stat-label">Orders</div>
+          <div className="dashboard-stat-value">86</div>
+          <div className="dashboard-stat-delta"><ArrowUp size={11} /> 8%</div>
+        </div>
+        <div className="dashboard-stat dashboard-stat-highlight">
+          <div className="dashboard-stat-label">Commission Earned</div>
+          <div className="dashboard-stat-value">₹18,650</div>
+          <div className="dashboard-stat-delta">+₹450 today</div>
+        </div>
+      </div>
+      <div className="dashboard-chart">
+        {bars.map((h, i) => (
+          <div key={i} className="dashboard-bar" style={{ height: `${h}%` }} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function WhatYouGet() {
   const features = [
     { Icon: LayoutDashboard, title: 'See Your Earnings in Real Time', desc: 'Log in anytime to see your clicks, orders, and commissions — no waiting on anyone to send you a report.' },
-    { Icon: Link2, title: 'One Link, Multiple Products', desc: 'Tag several products in a single link, perfect for "my routine" or haul-style content.' },
+    {
+      Icon: Link2,
+      title: 'One Link, Multiple Products',
+      desc: 'Tag several products in a single link, perfect for "my routine" or haul-style content.',
+      chip: 'beautybarn.in/s/my-routine',
+    },
     { Icon: Sparkles, title: 'Your Own Branded Page', desc: 'Followers who click your link land on a beautiful branded page showcasing everything you recommended.' },
     { Icon: MessageCircle, title: 'Turn Comments Into Sales', desc: 'Set a keyword on your Instagram post and we\'ll automatically DM your link to anyone who comments it.' },
   ]
@@ -191,6 +358,9 @@ function WhatYouGet() {
           <p>Simple tools that help you share smarter and earn more — no extra apps, no hassle.</p>
         </div>
       </FadeIn>
+      <FadeIn>
+        <DashboardMockup />
+      </FadeIn>
       <div className="features-grid">
         {features.map((f, i) => (
           <FadeIn key={i}>
@@ -201,6 +371,13 @@ function WhatYouGet() {
               <div>
                 <h3>{f.title}</h3>
                 <p>{f.desc}</p>
+                {f.chip && (
+                  <div className="link-chip">
+                    <Link2 size={12} />
+                    <span>{f.chip}</span>
+                    <Copy size={12} />
+                  </div>
+                )}
               </div>
             </div>
           </FadeIn>
@@ -283,6 +460,7 @@ function WaitlistForm() {
 
   return (
     <section id="join" className="section form-section">
+      <img src={beautybarnLogo} alt="" className="form-section-watermark" aria-hidden="true" />
       <FadeIn>
         <div className="section-header">
           <span className="section-tag">Join the Waitlist</span>
@@ -480,7 +658,9 @@ function Footer() {
     <footer className="footer">
       <div className="footer-inner">
         <div className="footer-brand">
-          <h3>BeautyBarn</h3>
+          <div className="footer-logo-card">
+            <img src={beautybarnLogo} alt="BeautyBarn" className="footer-logo-img" />
+          </div>
           <p>Your #1 K-Beauty Destination. Discover authentic Korean beauty products and join our growing community of beauty creators.</p>
         </div>
         <div className="footer-links">
@@ -514,6 +694,7 @@ function App() {
     <>
       <Navbar />
       <Hero />
+      <BrandsStrip />
       <HowItWorks />
       <Benefits />
       <WhatYouGet />

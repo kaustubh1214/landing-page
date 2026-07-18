@@ -1,21 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import {
   ClipboardList, Link2, Wallet, TrendingUp, LayoutDashboard, Target,
-  MessageCircle, ShoppingBag, Image, Sparkles, Heart, Send, Copy, ArrowUp,
-  MousePointerClick, Percent
+  MessageCircle, ShoppingBag, Sparkles, Copy, ArrowUp,
+  Droplet, Dumbbell, Shirt, HeartPulse, Camera, UtensilsCrossed,
+  Plane, Gamepad2, Music2,
 } from 'lucide-react'
-import beautybarnLogo from './assets/beautybarn-logo.png'
-import snailMucinEssence from './assets/products/snail-mucin-essence.webp'
-import hyaluronicCream from './assets/products/hyaluronic-cream.webp'
-import sunCream from './assets/products/sun-cream.webp'
-import cosrxLogo from './assets/brands/cosrx.png'
-import isntreeLogo from './assets/brands/isntree.png'
-import beautyOfJoseonLogo from './assets/brands/beauty-of-joseon.png'
-import vtCosmeticsLogo from './assets/brands/vt-cosmetics.png'
-import skin1004Logo from './assets/brands/skin1004.png'
-import axisYLogo from './assets/brands/axis-y.png'
-import laneigeLogo from './assets/brands/laneige.png'
-import dearKlairsLogo from './assets/brands/dear-klairs.png'
 import './App.css'
 
 function useScrollVisible() {
@@ -57,12 +46,11 @@ function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-inner">
-        <a href="https://beautybarn.in" className="nav-logo" target="_blank" rel="noopener noreferrer">
-          <img src={beautybarnLogo} alt="BeautyBarn" className="nav-logo-img" />
-        </a>
+        <a href="#" className="nav-logo">26ritual</a>
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <li><a href="#how-it-works" onClick={() => setMenuOpen(false)}>How It Works</a></li>
           <li><a href="#benefits" onClick={() => setMenuOpen(false)}>Benefits</a></li>
+          <li><a href="#automation" onClick={() => setMenuOpen(false)}>Automation</a></li>
           <li><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a></li>
           <li><a href="#join" className="nav-cta" onClick={() => setMenuOpen(false)}>Join Waitlist</a></li>
         </ul>
@@ -74,80 +62,44 @@ function Navbar() {
   )
 }
 
-function HeroIllustration() {
+function HeroVisual() {
   return (
-    <div className="hero-illustration">
-      <div className="hero-glow" />
-
-      {/* abstract accent blobs */}
-      <div className="hero-blob blob-1" />
-      <div className="hero-blob blob-2" />
-      <div className="hero-blob blob-3" />
-      <div className="hero-blob blob-4" />
-
-      {/* radar/target rings behind the phone */}
-      <div className="hero-rings">
-        <div className="hero-ring ring-1" />
-        <div className="hero-ring ring-2" />
+    <div className="hero-visual-card">
+      <div className="hv-topbar">
+        <div className="hv-dots"><span /><span /><span /></div>
+        <div className="hv-tab">Your Dashboard</div>
       </div>
-
-      {/* Instagram-style post mockup: shows the actual affiliate mechanic */}
-      <div className="phone-mockup">
-        <div className="phone-notch" />
-        <div className="phone-post">
-          <div className="post-header">
-            <div className="post-avatar" />
-            <div>
-              <div className="post-username">yourhandle</div>
-              <div className="post-sponsored">Sponsored</div>
-            </div>
+      <div className="hv-body">
+        <div className="hv-stat-row">
+          <div className="hv-stat">
+            <div className="hv-stat-label">Total Earnings</div>
+            <div className="hv-stat-value">$12,480</div>
+            <div className="hv-stat-delta"><ArrowUp size={12} /> 24%</div>
           </div>
-          <div className="post-image-wrap">
-            <img src={snailMucinEssence} alt="COSRX Advanced Snail 96 Mucin Power Essence" className="post-image" />
-            <div className="post-shop-tag">
-              <ShoppingBag size={12} />
-              Tap to shop
-            </div>
-          </div>
-          <div className="post-actions">
-            <Heart size={18} />
-            <MessageCircle size={18} />
-            <Send size={18} />
-          </div>
-          <div className="post-caption">
-            <strong>yourhandle</strong> obsessed with this serum ✨ link in bio
+          <div className="hv-stat">
+            <div className="hv-stat-label">Active Referrals</div>
+            <div className="hv-stat-value">312</div>
+            <div className="hv-stat-delta"><ArrowUp size={12} /> 12%</div>
           </div>
         </div>
-      </div>
-
-      {/* floating affiliate-mechanic stat badges */}
-      <div className="floating-badge badge-earnings">
-        <TrendingUp size={18} strokeWidth={2.25} />
-        <div>
-          <div className="badge-value">+₹450</div>
-          <div className="badge-label">Commission Earned</div>
+        <div className="hv-chart">
+          {[35, 55, 42, 68, 50, 80, 64, 92].map((h, i) => (
+            <div key={i} className="hv-bar" style={{ height: `${h}%` }} />
+          ))}
+        </div>
+        <div className="hv-link-row">
+          <Link2 size={13} />
+          <span>26ritual.com/r/you</span>
+          <Copy size={13} />
         </div>
       </div>
-
-      <div className="floating-badge badge-link">
-        <Link2 size={14} />
-        <span>beautybarn.in/aff/you</span>
-        <Copy size={13} />
+      <div className="hv-float hv-float-1">
+        <TrendingUp size={14} />
+        <span>+$450 today</span>
       </div>
-
-      <div className="stat-pill pill-clicks">
-        <span className="stat-pill-icon"><MousePointerClick size={12} /></span>
-        Clicks <ArrowUp size={11} />
+      <div className="hv-float hv-float-2">
+        90% <span className="hv-float-sub">you keep</span>
       </div>
-
-      <div className="stat-pill pill-conversion">
-        <span className="stat-pill-icon"><Percent size={12} /></span>
-        Conversion <ArrowUp size={11} />
-      </div>
-
-      {/* small product accents for beauty context */}
-      <img src={hyaluronicCream} alt="Isntree Hyaluronic Acid Moist Cream" className="hero-product-accent accent-tl" />
-      <img src={sunCream} alt="COSRX Aloe Soothing Sun Cream" className="hero-product-accent accent-br" />
     </div>
   )
 }
@@ -155,76 +107,73 @@ function HeroIllustration() {
 function Hero() {
   return (
     <section className="hero">
-      <div className="floating-shapes">
-        <div className="shape shape-1"></div>
-        <div className="shape shape-2"></div>
-        <div className="shape shape-3"></div>
-      </div>
       <div className="hero-inner">
-        <div className="hero-content">
-          <div className="hero-badge">
-            <span className="hero-badge-dot"></span>
-            AFFILIATE PROGRAM — COMING SOON
-          </div>
+        <FadeIn className="hero-content">
+          <div className="hero-badge">KEEP UP TO 90% OF EVERYTHING YOU EARN</div>
           <h1>
-            Turn Your Love for <span>K-Beauty</span> Into Earnings
+            Where Creators<br />Come to <span>Earn.</span>
           </h1>
           <p className="hero-subtitle">
-            Join BeautyBarn's affiliate program and earn commissions by sharing the K-beauty products you already love with your audience.
+            You've already built an audience. Now turn it into income — join 26ritual's
+            affiliate program and earn real commissions sharing what you love.
           </p>
           <div className="hero-actions">
-            <a href="#join" className="btn-primary">
-              Join the Waitlist →
-            </a>
-            <a href="#how-it-works" className="btn-secondary">
-              Learn More
-            </a>
+            <a href="#join" className="btn-primary">Start Earning Today →</a>
+            <a href="#how-it-works" className="btn-secondary">Learn More</a>
           </div>
           <div className="hero-stats">
             <div className="hero-stat">
-              <div className="hero-stat-value">500+</div>
-              <div className="hero-stat-label">Products to Promote</div>
+              <div className="hero-stat-value">10,000+</div>
+              <div className="hero-stat-label">Creators Joined</div>
             </div>
             <div className="hero-stat">
-              <div className="hero-stat-value">50+</div>
-              <div className="hero-stat-label">K-Beauty Brands</div>
+              <div className="hero-stat-value">$2M+</div>
+              <div className="hero-stat-label">Paid to Creators</div>
             </div>
             <div className="hero-stat">
-              <div className="hero-stat-value">Up to 10%</div>
-              <div className="hero-stat-label">Commission Rates</div>
+              <div className="hero-stat-value">Up to 90%</div>
+              <div className="hero-stat-label">Revenue Share</div>
             </div>
           </div>
-        </div>
-        <div className="hero-visual">
-          <HeroIllustration />
-        </div>
+        </FadeIn>
+        <FadeIn className="hero-visual-wrap">
+          <HeroVisual />
+        </FadeIn>
       </div>
     </section>
   )
 }
 
-function BrandsStrip() {
-  const brands = [
-    { name: 'COSRX', img: cosrxLogo },
-    { name: 'Isntree', img: isntreeLogo },
-    { name: 'Beauty of Joseon', img: beautyOfJoseonLogo },
-    { name: 'VT Cosmetics', img: vtCosmeticsLogo },
-    { name: 'SKIN1004', img: skin1004Logo },
-    { name: 'AXIS-Y', img: axisYLogo },
-    { name: 'Laneige', img: laneigeLogo },
-    { name: 'Dear Klairs', img: dearKlairsLogo },
+function NicheStrip() {
+  const niches = [
+    { name: 'Beauty', Icon: Sparkles },
+    { name: 'Skincare', Icon: Droplet },
+    { name: 'Fitness', Icon: Dumbbell },
+    { name: 'Fashion', Icon: Shirt },
+    { name: 'Wellness', Icon: HeartPulse },
+    { name: 'Lifestyle', Icon: Camera },
+    { name: 'Food', Icon: UtensilsCrossed },
+    { name: 'Finance', Icon: TrendingUp },
+    { name: 'Travel', Icon: Plane },
+    { name: 'Gaming', Icon: Gamepad2 },
+    { name: 'Music', Icon: Music2 },
+    { name: 'Photography', Icon: Camera },
   ]
 
   return (
-    <section className="brands-strip">
+    <section className="niche-strip">
       <FadeIn>
-        <p className="brands-strip-label">Promote products from brands your audience already loves</p>
+        <div className="niche-header">
+          <h2>Every Niche.<br /><span>One Program.</span></h2>
+          <p>Whatever you create content about, there's a place for you here.</p>
+        </div>
       </FadeIn>
       <FadeIn>
-        <div className="brands-track">
-          {brands.map((b, i) => (
-            <div className="brand-card" key={i}>
-              <img src={b.img} alt={b.name} />
+        <div className="niche-grid">
+          {niches.map((n, i) => (
+            <div className="niche-card" key={i}>
+              <n.Icon size={22} strokeWidth={1.75} />
+              <span>{n.name}</span>
             </div>
           ))}
         </div>
@@ -247,7 +196,7 @@ function HowItWorks() {
         <div className="flow-dot" />
         {[
           { Icon: ClipboardList, label: 'Step 1', title: 'Sign Up & Get Approved', desc: 'Fill out our simple application form. Our team reviews and approves your profile within 48 hours.' },
-          { Icon: Link2, label: 'Step 2', title: 'Share Your Links', desc: 'Browse products, generate unique tracking links, and share them with your audience on any platform.' },
+          { Icon: Link2, label: 'Step 2', title: 'Share Your Links', desc: 'Grab your unique tracking link and share it with your audience on any platform.' },
           { Icon: Wallet, label: 'Step 3', title: 'Earn Commissions', desc: 'Earn commissions on every sale made through your links. Track your performance in real-time.' },
         ].map((step, i) => (
           <FadeIn key={i}>
@@ -268,10 +217,10 @@ function HowItWorks() {
 
 function Benefits() {
   const benefits = [
-    { Icon: TrendingUp, title: 'Competitive Commissions', desc: 'Earn attractive commissions on every sale, with higher rates during special campaigns and for top performers.' },
-    { Icon: Target, title: 'Exclusive Campaigns', desc: 'Get invited to brand campaigns with boosted commission rates, early product access, and dedicated support.' },
-    { Icon: ShoppingBag, title: 'Multi-Product Bundles', desc: 'Promote multiple products with a single link. Perfect for "my routine" posts and haul videos.' },
-    { Icon: Image, title: 'Ready-Made Creatives', desc: 'Grab branded banners and creatives for trending products so you always have fresh content to share.' },
+    { Icon: TrendingUp, title: 'Industry-Leading Payouts', desc: 'Keep up to 90% of everything you earn, with boosted rates during special campaigns and for top performers.' },
+    { Icon: Target, title: 'Exclusive Campaigns', desc: 'Get invited to campaigns with higher commission rates, early access, and dedicated support.' },
+    { Icon: ShoppingBag, title: 'Multi-Product Bundles', desc: 'Promote multiple products with a single link. Perfect for roundups and haul-style content.' },
+    { Icon: Sparkles, title: 'Ready-Made Creatives', desc: 'Grab branded banners and creatives for trending offers so you always have fresh content to share.' },
   ]
 
   return (
@@ -279,8 +228,8 @@ function Benefits() {
       <FadeIn>
         <div className="section-header">
           <span className="section-tag">Why Join</span>
-          <h2>Everything You Need to Succeed</h2>
-          <p>We provide the tools, products, and support to help you monetise your K-beauty content.</p>
+          <h2>Everything You Need to <span>Succeed</span></h2>
+          <p>We provide the tools and support to help you monetise your content.</p>
         </div>
       </FadeIn>
       <div className="benefits-grid">
@@ -323,8 +272,8 @@ function DashboardMockup() {
         </div>
         <div className="dashboard-stat dashboard-stat-highlight">
           <div className="dashboard-stat-label">Commission Earned</div>
-          <div className="dashboard-stat-value">₹18,650</div>
-          <div className="dashboard-stat-delta">+₹450 today</div>
+          <div className="dashboard-stat-value">$1,865</div>
+          <div className="dashboard-stat-delta">+$45 today</div>
         </div>
       </div>
       <div className="dashboard-chart">
@@ -342,11 +291,11 @@ function WhatYouGet() {
     {
       Icon: Link2,
       title: 'One Link, Multiple Products',
-      desc: 'Tag several products in a single link, perfect for "my routine" or haul-style content.',
-      chip: 'beautybarn.in/s/my-routine',
+      desc: 'Tag several products in a single link, perfect for roundups or haul-style content.',
+      chip: '26ritual.com/s/my-picks',
     },
     { Icon: Sparkles, title: 'Your Own Branded Page', desc: 'Followers who click your link land on a beautiful branded page showcasing everything you recommended.' },
-    { Icon: MessageCircle, title: 'Turn Comments Into Sales', desc: 'Set a keyword on your Instagram post and we\'ll automatically DM your link to anyone who comments it.' },
+    { Icon: MessageCircle, title: 'Turn Comments Into Sales', desc: 'Set a keyword on your post and we\'ll automatically DM your link to anyone who comments it.' },
   ]
 
   return (
@@ -354,7 +303,7 @@ function WhatYouGet() {
       <FadeIn>
         <div className="section-header">
           <span className="section-tag">Your Creator Toolkit</span>
-          <h2>Everything You Need, Right in Your Dashboard</h2>
+          <h2>Everything You Need, Right in <span>Your Dashboard</span></h2>
           <p>Simple tools that help you share smarter and earn more — no extra apps, no hassle.</p>
         </div>
       </FadeIn>
@@ -383,6 +332,59 @@ function WhatYouGet() {
           </FadeIn>
         ))}
       </div>
+    </section>
+  )
+}
+
+function CommentAutomation() {
+  return (
+    <section id="automation" className="section automation-section">
+      <FadeIn>
+        <div className="section-header">
+          <span className="section-tag">DM Automation</span>
+          <h2>Turn Comments Into <span>Conversions</span></h2>
+          <p>Set a keyword on your post — we handle the rest, automatically.</p>
+        </div>
+      </FadeIn>
+      <FadeIn>
+        <div className="automation-card">
+          <div className="automation-post">
+            <div className="automation-post-header">
+              <div className="automation-avatar" />
+              <div>
+                <div className="automation-username">yourhandle</div>
+                <div className="automation-caption">Comment "SHOP" to get my link 👇</div>
+              </div>
+            </div>
+            <div className="automation-comment">
+              <div className="automation-avatar automation-avatar-sm" />
+              <div className="automation-comment-body">
+                <strong>fan_account</strong> SHOP 🔥
+              </div>
+            </div>
+          </div>
+
+          <div className="automation-arrow">
+            <MessageCircle size={20} />
+          </div>
+
+          <div className="automation-dm">
+            <div className="automation-dm-header">
+              <div className="automation-avatar automation-avatar-sm" />
+              <div className="automation-username">yourhandle</div>
+              <span className="automation-dm-tag">Auto-DM</span>
+            </div>
+            <div className="automation-dm-bubble">
+              Hey! Thanks for the comment 💌 here's the link:
+              <div className="automation-dm-link">
+                <Link2 size={12} />
+                <span>26ritual.com/r/you</span>
+                <Copy size={12} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </FadeIn>
     </section>
   )
 }
@@ -460,7 +462,6 @@ function WaitlistForm() {
 
   return (
     <section id="join" className="section form-section">
-      <img src={beautybarnLogo} alt="" className="form-section-watermark" aria-hidden="true" />
       <FadeIn>
         <div className="section-header">
           <span className="section-tag">Join the Waitlist</span>
@@ -474,7 +475,7 @@ function WaitlistForm() {
             <div className="form-success">
               <div className="form-success-icon">🎉</div>
               <h3>You're on the list!</h3>
-              <p>Thank you for your interest in the BeautyBarn Affiliate Program. We'll reach out to you as soon as we launch with early access details.</p>
+              <p>Thank you for your interest in the 26ritual Affiliate Program. We'll reach out to you as soon as we launch with early access details.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="application-form">
@@ -516,7 +517,7 @@ function WaitlistForm() {
               </div>
 
               <div className="form-block">
-                <label>How will you promote BeautyBarn? <span>*</span></label>
+                <label>How will you promote 26ritual? <span>*</span></label>
                 {platforms.map((p, i) => (
                   <div className="platform-row" key={i}>
                     <select
@@ -564,7 +565,7 @@ function WaitlistForm() {
                 <span className="form-hint">Any additional details that might help us review your application</span>
                 <textarea
                   name="additionalInfo"
-                  placeholder="Tell us more about yourself and how you plan to promote BeautyBarn..."
+                  placeholder="Tell us more about yourself and how you plan to promote 26ritual..."
                   value={form.additionalInfo}
                   onChange={handleChange}
                 />
@@ -602,12 +603,12 @@ function FAQ() {
 
   const faqs = [
     {
-      q: 'Who can join the BeautyBarn Affiliate Program?',
-      a: 'Anyone with an active social media presence who creates content around beauty, skincare, K-beauty, lifestyle, or related niches can apply. We welcome creators of all sizes — from micro-influencers to established content creators.'
+      q: 'Who can join the 26ritual Affiliate Program?',
+      a: 'Anyone with an active social media presence who creates content in any niche can apply. We welcome creators of all sizes — from micro-influencers to established content creators.'
     },
     {
       q: 'How much can I earn?',
-      a: 'Our base commission starts at 5% per sale, with rates going up to 10% or more during special campaigns. Top-performing and VIP creators can negotiate custom rates for even higher earnings.'
+      a: 'You keep up to 90% of everything you earn, with rates going even higher during special campaigns. Top-performing and VIP creators can negotiate custom rates for even higher earnings.'
     },
     {
       q: 'How do I track my performance?',
@@ -615,11 +616,11 @@ function FAQ() {
     },
     {
       q: 'What is the multi-product bundle link?',
-      a: 'You can select multiple products and generate a single link that leads to a branded landing page showing all your recommendations. Perfect for "my routine" or "haul" content on Instagram.'
+      a: 'You can select multiple products and generate a single link that leads to a branded landing page showing all your recommendations. Perfect for roundup or "haul" content.'
     },
     {
       q: 'What is the Comment-to-DM feature?',
-      a: 'It\'s an automation tool that automatically sends your affiliate link via Instagram DM when a follower comments a specific keyword on your post. It makes converting engagement into sales effortless.'
+      a: 'It\'s an automation tool that automatically sends your affiliate link via DM when a follower comments a specific keyword on your post. It makes converting engagement into sales effortless.'
     },
     {
       q: 'When is the upgraded platform launching?',
@@ -658,17 +659,15 @@ function Footer() {
     <footer className="footer">
       <div className="footer-inner">
         <div className="footer-brand">
-          <div className="footer-logo-card">
-            <img src={beautybarnLogo} alt="BeautyBarn" className="footer-logo-img" />
-          </div>
-          <p>Your #1 K-Beauty Destination. Discover authentic Korean beauty products and join our growing community of beauty creators.</p>
+          <h3>26ritual</h3>
+          <p>A platform for creators to grow their audience and turn it into real, recurring income.</p>
         </div>
         <div className="footer-links">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="https://beautybarn.in" target="_blank" rel="noopener noreferrer">Shop BeautyBarn</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
             <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#automation">Automation</a></li>
             <li><a href="#join">Join Waitlist</a></li>
           </ul>
         </div>
@@ -676,14 +675,14 @@ function Footer() {
           <h4>Support</h4>
           <ul>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="https://beautybarn.in/pages/contact-us" target="_blank" rel="noopener noreferrer">Contact Us</a></li>
-            <li><a href="https://beautybarn.in/policies/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
-            <li><a href="https://beautybarn.in/policies/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
           </ul>
         </div>
       </div>
       <div className="footer-bottom">
-        &copy; {new Date().getFullYear()} BeautyBarn. All rights reserved.
+        &copy; {new Date().getFullYear()} 26ritual. All rights reserved.
       </div>
     </footer>
   )
@@ -694,10 +693,11 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      <BrandsStrip />
+      <NicheStrip />
       <HowItWorks />
       <Benefits />
       <WhatYouGet />
+      <CommentAutomation />
       <WaitlistForm />
       <FAQ />
       <Footer />
